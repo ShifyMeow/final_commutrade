@@ -1,4 +1,4 @@
-import 'package.flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {
   final String title;
@@ -17,24 +17,27 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // This Card cannot be 'const' because it depends on 'Theme.of(context)',
+    // which is determined when the app is running, not when it's compiling.
     return Card(
-      // Using properties from our theme for consistency
       elevation: 4.0,
       shadowColor: Theme.of(context).shadowColor.withOpacity(0.1),
       shape: RoundedRectangleBorder(
+        // This 'borderRadius' can be constant.
         borderRadius: BorderRadius.circular(12.0),
       ),
-      // Ensures the image inside respects the rounded corners
       clipBehavior: Clip.antiAlias,
+      // This 'margin' can be constant.
       margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // --- Image Placeholder ---
           AspectRatio(
             aspectRatio: 16 / 9,
+            // This Container cannot be 'const' because its color depends on the theme.
             child: Container(
               color: Theme.of(context).scaffoldBackgroundColor.withAlpha(100),
+              // This Icon can be constant.
               child: const Icon(
                 Icons.image_not_supported_outlined,
                 size: 60,
@@ -42,18 +45,21 @@ class ItemCard extends StatelessWidget {
               ),
             ),
           ),
-          // --- Item Details ---
+          // This Padding can be constant.
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // This Text cannot be 'const' because 'title' is a variable
+                // and its style depends on the theme.
                 Text(
                   title,
                   style: Theme.of(context).textTheme.titleLarge,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
+                // This SizedBox can be constant.
                 const SizedBox(height: 4),
                 Text(
                   'Posted by $author',
