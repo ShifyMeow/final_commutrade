@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
 
-class AppThemeNotifier extends InheritedWidget {
-  final Function(ThemeMode) changeTheme;
+class AppThemeNotifier extends ChangeNotifier {
+  bool _isDarkMode = false;
 
-  const AppThemeNotifier({
-    Key? key,
-    required this.changeTheme,
-    required Widget child,
-  }) : super(key: key, child: child);
+  bool get isDarkMode => _isDarkMode;
 
-  static AppThemeNotifier of(BuildContext context) {
-    final AppThemeNotifier? result = context.dependOnInheritedWidgetOfExactType<AppThemeNotifier>();
-    assert(result != null, 'No AppThemeNotifier found in context');
-    return result!;
-  }
-
-  @override
-  bool updateShouldNotify(AppThemeNotifier oldWidget) {
-    return oldWidget.changeTheme != oldWidget.changeTheme;
+  void toggleTheme() {
+    _isDarkMode = !_isDarkMode;
+    notifyListeners();
   }
 }
