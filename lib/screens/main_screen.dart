@@ -1,3 +1,7 @@
+import 'package:final_commutrade/screens/chat/chat_screen.dart';
+import 'package:final_commutrade/screens/home/home_screen.dart';
+import 'package:final_commutrade/screens/marketplace/marketplace_screen.dart';
+import 'package:final_commutrade/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -10,13 +14,13 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  // Placeholder pages for the navigation tabs
-  // We will replace these with the actual screen widgets later.
+  // This list now contains our actual screen widgets.
+  // We use const to optimize performance.
   static const List<Widget> _widgetOptions = <Widget>[
-    PlaceholderScreen(text: 'Home Page'),
-    PlaceholderScreen(text: 'Marketplace Page'),
-    PlaceholderScreen(text: 'Chat Page'),
-    PlaceholderScreen(text: 'Profile Page'),
+    HomeScreen(),
+    MarketplaceScreen(),
+    ChatScreen(),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -56,29 +60,12 @@ class _MainScreenState extends State<MainScreen> {
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        // These properties are essential for the modern, clean look.
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Theme.of(context).colorScheme.primary,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         backgroundColor: Theme.of(context).cardColor,
         elevation: 8.0,
-      ),
-    );
-  }
-}
-
-// Simple placeholder widget to display in the body.
-class PlaceholderScreen extends StatelessWidget {
-  final String text;
-  const PlaceholderScreen({super.key, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        text,
-        style: Theme.of(context).textTheme.headlineSmall,
       ),
     );
   }
