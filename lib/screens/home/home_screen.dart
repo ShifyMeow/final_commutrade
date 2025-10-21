@@ -6,22 +6,22 @@ import 'package:provider/provider.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  // Updated placeholder data to reflect selling in RM
+  // Updated with generic placeholder data
   final List<Map<String, String>> _featuredItems = const [
     {
-      'title': 'Vintage Leather Jacket',
-      'price': 'RM 250.00',
-      'author': 'user123',
+      'title': 'Featured Item 1',
+      'price': 'RM 110.00',
+      'author': 'Seller A',
     },
     {
-      'title': 'Classic Acoustic Guitar',
-      'price': 'RM 180.50',
-      'author': 'musician_max',
+      'title': 'Featured Item 2',
+      'price': 'RM 85.50',
+      'author': 'Seller B',
     },
     {
-      'title': 'Rare Comic Book Collection',
-      'price': 'RM 95.00',
-      'author': 'collector_carl',
+      'title': 'Featured Item 3',
+      'price': 'RM 499.00',
+      'author': 'Seller C',
     },
   ];
 
@@ -57,7 +57,6 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- Welcome Header ---
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
@@ -74,8 +73,6 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-
-              // --- Featured Items Section ---
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
