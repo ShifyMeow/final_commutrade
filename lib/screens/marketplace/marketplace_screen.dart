@@ -1,7 +1,47 @@
+import 'package:final_commutrade/widgets/item_card.dart';
 import 'package:flutter/material.dart';
 
 class MarketplaceScreen extends StatelessWidget {
   const MarketplaceScreen({super.key});
+
+  // A larger list of placeholder data for the marketplace
+  final List<Map<String, String>> _marketplaceItems = const [
+    {
+      'title': 'Set of 4 Nordic Chairs',
+      'price': 'RM 450.00',
+      'author': 'design_dreamer',
+    },
+    {
+      'title': 'Professional Camera Lens',
+      'price': 'RM 800.00',
+      'author': 'photo_pro',
+    },
+    {
+      'title': 'Vintage Leather Jacket',
+      'price': 'RM 250.00',
+      'author': 'user123',
+    },
+    {
+      'title': 'Mountain Bike - Like New',
+      'price': 'RM 1200.00',
+      'author': 'adventure_ali',
+    },
+    {
+      'title': 'Classic Acoustic Guitar',
+      'price': 'RM 180.50',
+      'author': 'musician_max',
+    },
+    {
+      'title': 'Gaming Monitor 27"',
+      'price': 'RM 650.00',
+      'author': 'gamer_z',
+    },
+    {
+      'title': 'Rare Comic Book Collection',
+      'price': 'RM 95.00',
+      'author': 'collector_carl',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -19,39 +59,25 @@ class MarketplaceScreen extends StatelessWidget {
         elevation: 4.0,
         backgroundColor: Theme.of(context).cardColor,
       ),
-      body: const Center(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.storefront_outlined,
-                size: 80,
-                color: Colors.grey,
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Marketplace',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 10),
-              Text(
-                'A grid or list of items for trade will be displayed here.',
-                style: TextStyle(fontSize: 16, color: Colors.grey),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        ),
+      body: ListView.builder(
+        // Add some padding to the top and bottom of the list
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        itemCount: _marketplaceItems.length,
+        itemBuilder: (BuildContext context, int index) {
+          final item = _marketplaceItems[index];
+          return ItemCard(
+            title: item['title']!,
+            price: item['price']!,
+            author: item['author']!,
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Placeholder for adding a new item
         },
-        child: const Icon(Icons.add),
         tooltip: 'Post a new item',
+        child: const Icon(Icons.add),
       ),
     );
   }
