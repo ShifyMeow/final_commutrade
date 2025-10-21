@@ -4,29 +4,29 @@ import 'package:flutter/material.dart';
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
 
-  // Revised placeholder data to reflect the new multi-purpose chat
+  // Revised placeholder data with 100% generic content
   final List<Map<String, dynamic>> _chatData = const [
     {
-      'name': 'Official Announcements',
-      'lastMessage': 'Warden: Please be advised of the upcoming...',
+      'name': 'Announcement Channel',
+      'lastMessage': 'This is the latest announcement...',
       'time': '11:30 AM',
       'hasUnread': true,
     },
     {
-      'name': 'Cloud Computing Project Group',
-      'lastMessage': 'Sarah: Don\'t forget the deadline is Friday!',
+      'name': 'Group Chat Name',
+      'lastMessage': 'User Name: This is a group message.',
       'time': '10:55 AM',
       'hasUnread': true,
     },
     {
-      'name': 'John Doe (Seller)',
-      'lastMessage': 'Yes, the item is still available.',
+      'name': 'Seller Name',
+      'lastMessage': 'This is a message about an item.',
       'time': '9:15 AM',
       'hasUnread': false,
     },
     {
-      'name': 'Maria Garcia',
-      'lastMessage': 'See you at the library later.',
+      'name': 'User Name',
+      'lastMessage': 'This is the last message received.',
       'time': 'Yesterday',
       'hasUnread': false,
     },
