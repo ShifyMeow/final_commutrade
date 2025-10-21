@@ -1,4 +1,4 @@
-import 'package:final_commutrade/theme/app_theme_notifier.dart';
+import 'package.final_commutrade/theme/app_theme_notifier.dart';
 import 'package:final_commutrade/widgets/item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,28 +6,27 @@ import 'package:provider/provider.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  // Placeholder data for the featured items
+  // Updated placeholder data to reflect selling in RM
   final List<Map<String, String>> _featuredItems = const [
     {
       'title': 'Vintage Leather Jacket',
-      'price': 'Trade for Watch',
+      'price': 'RM 250.00',
       'author': 'user123',
     },
     {
       'title': 'Classic Acoustic Guitar',
-      'price': 'Trade/Sell: \$150',
+      'price': 'RM 180.50',
       'author': 'musician_max',
     },
     {
       'title': 'Rare Comic Book Collection',
-      'price': 'Trade Only',
+      'price': 'RM 95.00',
       'author': 'collector_carl',
     },
   ];
 
   @override
   Widget build(BuildContext context) {
-    // CORRECTED THIS LINE: AppThemeNotifier instead of AppThemNotifier
     final themeNotifier = Provider.of<AppThemeNotifier>(context);
     final textTheme = Theme.of(context).textTheme;
 
@@ -48,7 +47,7 @@ class HomeScreen extends StatelessWidget {
             },
           ),
         ],
-        elevation: 0, // A flatter look for the dashboard AppBar
+        elevation: 0,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         foregroundColor: Theme.of(context).colorScheme.onBackground,
       ),
@@ -86,16 +85,15 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               SizedBox(
-                height: 260, // Set a fixed height for the horizontal list
+                height: 260,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: _featuredItems.length,
-                  // Add padding to the list for better spacing
                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
                   itemBuilder: (context, index) {
                     final item = _featuredItems[index];
                     return SizedBox(
-                      width: 300, // Constrain the width of the card in the horizontal list
+                      width: 300,
                       child: ItemCard(
                         title: item['title']!,
                         price: item['price']!,
