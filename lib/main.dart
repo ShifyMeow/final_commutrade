@@ -1,3 +1,4 @@
+import 'package:final_commutrade/screens/main_screen.dart';
 import 'package:final_commutrade/theme/app_theme.dart';
 import 'package:final_commutrade/theme/app_theme_notifier.dart';
 import 'package:flutter/material.dart';
@@ -24,44 +25,10 @@ class CommuTradeApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: themeNotifier.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-          home: const PlaceholderHomePage(),
+          home: const MainScreen(),
           debugShowCheckedModeBanner: false,
         );
       },
-    );
-  }
-}
-
-// Placeholder widget for the home page.
-// This will be replaced later with the actual app navigation.
-class PlaceholderHomePage extends StatelessWidget {
-  const PlaceholderHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // Accessing the theme notifier to toggle the theme
-    final themeNotifier = Provider.of<AppThemeNotifier>(context);
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('CommuTrade'),
-        actions: [
-          IconButton(
-            icon: Icon(
-              themeNotifier.isDarkMode ? Icons.nightlight_round : Icons.wb_sunny,
-            ),
-            onPressed: () {
-              themeNotifier.toggleTheme();
-            },
-          ),
-        ],
-      ),
-      body: const Center(
-        child: Text(
-          'Welcome to CommuTrade!',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
     );
   }
 }
