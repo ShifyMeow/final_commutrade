@@ -1,4 +1,5 @@
 import 'package:final_commutrade/theme/app_theme_notifier.dart';
+import 'package:final_commutrade/widgets/announcement_card.dart'; // We will add this import
 import 'package:final_commutrade/widgets/item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,7 +7,14 @@ import 'package:provider/provider.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  // Updated with generic placeholder data
+  // Placeholder data for the announcement
+  final Map<String, String> _announcement = const {
+    'title': 'Important Announcement',
+    'content': 'This is a placeholder for an important announcement from a lecturer or warden.',
+    'author': 'Admin',
+  };
+
+  // Generic placeholder data for featured items
   final List<Map<String, String>> _featuredItems = const [
     {
       'title': 'Featured Item 1',
@@ -57,6 +65,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // --- Welcome Header ---
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
@@ -64,15 +73,12 @@ class HomeScreen extends StatelessWidget {
                   style: textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
                 ),
               ),
-              const SizedBox(height: 8),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  'Here are some new items you might like.',
-                  style: textTheme.titleMedium?.copyWith(color: Colors.grey),
-                ),
-              ),
               const SizedBox(height: 24),
+
+              // --- Announcement Section ---
+              // We will add this section in the next step, but the overflow fix is below
+
+              // --- Featured Items Section ---
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
@@ -82,19 +88,25 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               SizedBox(
-                height: 260,
+                // *** THE FIX IS HERE ***
+                // Increased height from 260 to 280 to prevent overflow
+                height: 280,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: _featuredItems.length,
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   itemBuilder: (context, index) {
                     final item = _featuredItems[index];
                     return SizedBox(
                       width: 300,
-                      child: ItemCard(
-                        title: item['title']!,
-                        price: item['price']!,
-                        author: item['author']!,
+                      // We wrap the ItemCard in Padding to give it space
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: ItemCard(
+                          title: item['title']!,
+                          price: item['price']!,
+                          author: item['author']!,
+                        ),
                       ),
                     );
                   },
