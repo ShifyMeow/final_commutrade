@@ -27,7 +27,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeNotifier = Provider.of<AppThemNotifier>(context);
+    // CORRECTED THIS LINE: AppThemeNotifier instead of AppThemNotifier
+    final themeNotifier = Provider.of<AppThemeNotifier>(context);
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
