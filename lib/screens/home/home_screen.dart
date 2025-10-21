@@ -1,4 +1,4 @@
-import 'package.final_commutrade/theme/app_theme_notifier.dart';
+import 'package:final_commutrade/theme/app_theme_notifier.dart';
 import 'package:final_commutrade/widgets/item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
