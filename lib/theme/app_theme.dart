@@ -40,8 +40,6 @@ class AppTheme {
     ),
   );
 
-  // --- *** THE NEW CODE IS HERE *** ---
-  // A reusable InputDecorationTheme for all TextFields
   static final _inputDecorationTheme = InputDecorationTheme(
     border: _border,
     enabledBorder: _border.copyWith(
@@ -57,7 +55,6 @@ class AppTheme {
       ),
     ),
     prefixIconColor: Colors.grey,
-    // This adds the 'x' button to clear the text
     suffixIconColor: Colors.grey,
     floatingLabelStyle: const TextStyle(color: _primaryColor),
   );
@@ -73,7 +70,6 @@ class AppTheme {
         borderRadius: BorderRadius.circular(12.0),
       ),
     ),
-    // Apply the new InputDecorationTheme
     inputDecorationTheme: _inputDecorationTheme,
   );
 
@@ -87,7 +83,6 @@ class AppTheme {
         borderRadius: BorderRadius.circular(12.0),
       ),
     ),
-    // Apply the new InputDecorationTheme, but with dark mode colors
     inputDecorationTheme: _inputDecorationTheme.copyWith(
       enabledBorder: _border.copyWith(
         borderSide: BorderSide(
@@ -96,14 +91,14 @@ class AppTheme {
         ),
       ),
       focusedBorder: _border.copyWith(
-        borderSide: const BorderSide(
+        borderSide: BorderSide( // REMOVED const
           color: _darkColorScheme.primary,
           width: 2.0,
         ),
       ),
       prefixIconColor: Colors.grey.shade400,
       suffixIconColor: Colors.grey.shade400,
-      floatingLabelStyle: const TextStyle(color: _darkColorScheme.primary),
+      floatingLabelStyle: TextStyle(color: _darkColorScheme.primary), // REMOVED const
     ),
   );
 }

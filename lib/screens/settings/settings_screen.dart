@@ -1,8 +1,8 @@
-import 'package:final_commutrade/theme/app_theme_notifier.dart'; // NEW import
+import 'package:final_commutrade/theme/app_theme_notifier.dart';
 import 'package:final_commutrade/widgets/custom_dialog.dart';
-import 'package:final_commutrade/widgets/settings_switch_tile.dart'; // NEW import
-import 'package.flutter/material.dart';
-import 'package:provider/provider.dart'; // NEW import
+import 'package:final_commutrade/widgets/settings_switch_tile.dart';
+import 'package:flutter/material.dart'; // CORRECTED IMPORT
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -25,7 +25,6 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Access the AppThemeNotifier to get the current theme state
     final themeNotifier = Provider.of<AppThemeNotifier>(context);
 
     return Scaffold(
@@ -34,7 +33,6 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          // --- Account Section ---
           const ListTile(
             leading: Icon(Icons.person_outline),
             title: Text('Edit Profile'),
@@ -47,8 +45,6 @@ class SettingsScreen extends StatelessWidget {
             subtitle: Text('Update your account security'),
             onTap: null,
           ),
-
-          // --- App Settings Section ---
           const Divider(),
           ListTile(
             leading: const Icon(Icons.notifications_outlined),
@@ -56,20 +52,15 @@ class SettingsScreen extends StatelessWidget {
             subtitle: const Text('Manage push notifications'),
             onTap: () {},
           ),
-          // *** THE CHANGE IS HERE ***
-          // Replaced the old ListTile with our new custom widget
           SettingsSwitchTile(
             icon: Icons.palette_outlined,
             title: 'Dark Mode',
             subtitle: 'Enable or disable the dark theme',
-            value: themeNotifier.isDarkMode, // The switch is on if dark mode is enabled
+            value: themeNotifier.isDarkMode,
             onChanged: (newValue) {
-              // When toggled, we call the toggleTheme method
               themeNotifier.toggleTheme();
             },
           ),
-
-          // --- Actions Section ---
           const Divider(),
           ListTile(
             leading: Icon(Icons.logout, color: Theme.of(context).colorScheme.error),
