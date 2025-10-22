@@ -1,8 +1,6 @@
-import 'package.flutter/material.dart';
+import 'package:flutter/material.dart'; // CORRECTED IMPORT
 
 class ItemDetailsScreen extends StatelessWidget {
-  // In a real app, we would pass an item ID or the full item object.
-  // For this UI placeholder, we'll use generic data.
   const ItemDetailsScreen({super.key});
 
   @override
@@ -11,12 +9,11 @@ class ItemDetailsScreen extends StatelessWidget {
     final textTheme = theme.textTheme;
 
     return Scaffold(
-      // Use a custom scroll view to allow the app bar to collapse
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             expandedHeight: 300.0,
-            pinned: true, // The app bar will remain visible as a header
+            pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               title: const Text(
                 'Item Title Placeholder',
@@ -32,7 +29,6 @@ class ItemDetailsScreen extends StatelessWidget {
               ),
             ),
           ),
-          // The rest of the page content goes into a SliverList
           SliverList(
             delegate: SliverChildListDelegate(
               [
@@ -41,7 +37,6 @@ class ItemDetailsScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // --- Price and Seller Info ---
                       Text(
                         'RM 99.99',
                         style: textTheme.headlineMedium?.copyWith(
@@ -57,8 +52,6 @@ class ItemDetailsScreen extends StatelessWidget {
                       const SizedBox(height: 24),
                       const Divider(),
                       const SizedBox(height: 24),
-
-                      // --- Description ---
                       Text(
                         'Description',
                         style: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
@@ -66,11 +59,9 @@ class ItemDetailsScreen extends StatelessWidget {
                       const SizedBox(height: 16),
                       Text(
                         'This is a placeholder for the item description. It will provide more details about the product, its condition, and any other relevant information for potential buyers. The text can wrap to multiple lines.',
-                        style: textTheme.bodyLarge?.copyWith(height: 1.5), // Increased line height for readability
+                        style: textTheme.bodyLarge?.copyWith(height: 1.5),
                       ),
                       const SizedBox(height: 24),
-
-                      // --- Seller Location (Example) ---
                       Row(
                         children: [
                           const Icon(Icons.location_on_outlined, color: Colors.grey),
@@ -89,7 +80,6 @@ class ItemDetailsScreen extends StatelessWidget {
           ),
         ],
       ),
-      // --- Floating Action Button or Bottom Bar for Action ---
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
@@ -102,9 +92,7 @@ class ItemDetailsScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.0),
               ),
             ),
-            onPressed: () {
-              // Placeholder for chat functionality
-            },
+            onPressed: () {},
           ),
         ),
       ),

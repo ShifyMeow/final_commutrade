@@ -1,5 +1,5 @@
 import 'package:final_commutrade/screens/item/item_details_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; // CORRECTED IMPORT
 
 class ItemCard extends StatelessWidget {
   final String title;
@@ -22,10 +22,8 @@ class ItemCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
       ),
       clipBehavior: Clip.antiAlias,
-      margin: const EdgeInsets.symmetric(vertical: 8.0), // Removed horizontal margin from here
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: InkWell(
-        // *** THE CHANGE IS HERE ***
-        // InkWell provides the tap functionality and a nice ripple effect.
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
@@ -36,7 +34,6 @@ class ItemCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // --- Image Placeholder ---
             AspectRatio(
               aspectRatio: 16 / 9,
               child: Container(
@@ -48,7 +45,6 @@ class ItemCard extends StatelessWidget {
                 ),
               ),
             ),
-            // --- Item Details ---
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
