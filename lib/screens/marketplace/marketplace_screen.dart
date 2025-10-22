@@ -1,3 +1,4 @@
+import 'package:final_commutrade/screens/item/add_item_screen.dart';
 import 'package:final_commutrade/widgets/item_card.dart';
 import 'package:flutter/material.dart';
 
@@ -31,16 +32,6 @@ class MarketplaceScreen extends StatelessWidget {
       'price': 'RM 300.00',
       'author': 'Seller Name 5',
     },
-    {
-      'title': 'Item Title 6',
-      'price': 'RM 75.00',
-      'author': 'Seller Name 6',
-    },
-    {
-      'title': 'Product Name 7',
-      'price': 'RM 49.90',
-      'author': 'Seller Name 7',
-    },
   ];
 
   @override
@@ -64,16 +55,26 @@ class MarketplaceScreen extends StatelessWidget {
         itemCount: _marketplaceItems.length,
         itemBuilder: (BuildContext context, int index) {
           final item = _marketplaceItems[index];
-          return ItemCard(
-            title: item['title']!,
-            price: item['price']!,
-            author: item['author']!,
+          return Padding(
+            // Added horizontal padding here to ensure consistent spacing
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: ItemCard(
+              title: item['title']!,
+              price: item['price']!,
+              author: item['author']!,
+            ),
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Placeholder for adding a new item
+          // *** THE CHANGE IS HERE ***
+          // Navigate to the AddItemScreen
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const AddItemScreen(),
+            ),
+          );
         },
         tooltip: 'Post a new item',
         child: const Icon(Icons.add),
