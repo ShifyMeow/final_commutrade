@@ -1,5 +1,6 @@
 import 'package:final_commutrade/screens/auth/register_screen.dart';
-import 'package:final_commutrade/screens/main_screen.dart';
+import 'package.final_commutrade/screens/main_screen.dart';
+import 'package:final_commutrade/widgets/clearable_text_field.dart'; // NEW import
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -34,28 +35,18 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 48),
 
                 // --- Matrics ID Field ---
-                TextField(
+                const ClearableTextField(
+                  labelText: 'Matrics ID',
+                  prefixIcon: Icons.badge_outlined,
                   keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    labelText: 'Matrics ID',
-                    prefixIcon: const Icon(Icons.badge_outlined),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                  ),
                 ),
                 const SizedBox(height: 16),
 
                 // --- Password Field ---
-                TextField(
+                const ClearableTextField(
+                  labelText: 'Password',
+                  prefixIcon: Icons.lock_outline,
                   obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    prefixIcon: const Icon(Icons.lock_outline),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                  ),
                 ),
                 const SizedBox(height: 32),
 

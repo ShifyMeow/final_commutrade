@@ -1,3 +1,4 @@
+import 'package:final_commutrade/widgets/clearable_text_field.dart'; // NEW import
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -37,54 +38,33 @@ class RegisterScreen extends StatelessWidget {
                 const SizedBox(height: 48),
 
                 // --- Full Name Field ---
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Full Name',
-                    prefixIcon: const Icon(Icons.person_outline),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                  ),
+                const ClearableTextField(
+                  labelText: 'Full Name',
+                  prefixIcon: Icons.person_outline,
                 ),
                 const SizedBox(height: 16),
 
                 // --- Matrics ID Field ---
-                TextField(
-                  // Using text keyboard type for flexibility (e.g., "AB12345")
+                const ClearableTextField(
+                  labelText: 'Matrics ID',
+                  prefixIcon: Icons.badge_outlined,
                   keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    labelText: 'Matrics ID',
-                    prefixIcon: const Icon(Icons.badge_outlined),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                  ),
                 ),
                 const SizedBox(height: 16),
 
                 // --- Password Field ---
-                TextField(
+                const ClearableTextField(
+                  labelText: 'Password',
+                  prefixIcon: Icons.lock_outline,
                   obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    prefixIcon: const Icon(Icons.lock_outline),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                  ),
                 ),
                 const SizedBox(height: 16),
 
                 // --- Confirm Password Field ---
-                TextField(
+                const ClearableTextField(
+                  labelText: 'Confirm Password',
+                  prefixIcon: Icons.lock_person_outlined,
                   obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Confirm Password',
-                    prefixIcon: const Icon(Icons.lock_person_outlined),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                  ),
                 ),
                 const SizedBox(height: 32),
 
