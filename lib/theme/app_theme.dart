@@ -1,95 +1,109 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 class AppTheme {
-// --- 1. Color Palette ---
-  static const Color primaryColor = Color(0xFF2C3E50);
-  static const Color secondaryColor = Color(0xFF3498DB);
-  static const Color accentColor = Color(0xFFFD7A2E);
-// Light Mode Colors
-  static const Color lightBackgroundColor = Color(0xFFF4F6F8);
-  static const Color lightSurfaceColor = Colors.white;
-// Dark Mode Colors
-  static const Color darkBackgroundColor = Color(0xFF1C1C1E);
-  static const Color darkSurfaceColor = Color(0xFF2C2C2E);
-// --- 2. Light Text Theme ---
-  static final TextTheme _lightTextTheme = TextTheme(
-    displayLarge: GoogleFonts.poppins(fontSize: 28, fontWeight: FontWeight.bold, color: primaryColor),
-    headlineMedium: GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.bold, color: primaryColor),
-    titleLarge: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
-    titleMedium: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black87),
-    bodyLarge: GoogleFonts.poppins(fontSize: 16, color: Colors.black87),
-    bodyMedium: GoogleFonts.poppins(fontSize: 14, color: Colors.black54),
-    labelLarge: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
+  // --- PRIVATE CONSTANTS ---
+  static const _primaryColor = Color(0xFF6200EE);
+  static const _lightColorScheme = ColorScheme(
+    brightness: Brightness.light,
+    primary: _primaryColor,
+    onPrimary: Colors.white,
+    secondary: Color(0xFF03DAC6),
+    onSecondary: Colors.black,
+    error: Color(0xFFB00020),
+    onError: Colors.white,
+    background: Color(0xFFFFFFFF),
+    onBackground: Colors.black,
+    surface: Color(0xFFF5F5F5),
+    onSurface: Colors.black,
   );
-// --- 3. Dark Text Theme ---
-  static final TextTheme _darkTextTheme = TextTheme(
-    displayLarge: GoogleFonts.poppins(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
-    headlineMedium: GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
-    titleLarge: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-    titleMedium: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
-    bodyLarge: GoogleFonts.poppins(fontSize: 16, color: Colors.white70),
-    bodyMedium: GoogleFonts.poppins(fontSize: 14, color: Colors.white54),
-    labelLarge: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+
+  static const _darkColorScheme = ColorScheme(
+    brightness: Brightness.dark,
+    primary: Color(0xFFBB86FC),
+    onPrimary: Colors.black,
+    secondary: Color(0xFF03DAC6),
+    onSecondary: Colors.black,
+    error: Color(0xFFCF6679),
+    onError: Colors.black,
+    background: Color(0xFF121212),
+    onBackground: Colors.white,
+    surface: Color(0xFF1E1E1E),
+    onSurface: Colors.white,
   );
-// --- 4. The Light Theme Definition ---
-  static ThemeData get lightTheme {
-    return ThemeData(
-        brightness: Brightness.light,
-        primaryColor: primaryColor,
-        scaffoldBackgroundColor: lightBackgroundColor,
-        colorScheme: const ColorScheme.light(
-          primary: primaryColor,
-          secondary: secondaryColor,
-          surface: lightSurfaceColor,
-          background: lightBackgroundColor,
-        ),
-        textTheme: _lightTextTheme,
-        appBarTheme: AppBarTheme(
-          backgroundColor: primaryColor,
-          elevation: 0,
-          iconTheme: const IconThemeData(color: Colors.white),
-          titleTextStyle: GoogleFonts.poppins(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: primaryColor,
-            foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-            textStyle: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        )
-    );
-  }
-// --- 5. The Dark Theme Definition ---
-  static ThemeData get darkTheme {
-    return ThemeData(
-      brightness: Brightness.dark,
-      primaryColor: primaryColor,
-      scaffoldBackgroundColor: darkBackgroundColor,
-      colorScheme: const ColorScheme.dark(
-        primary: primaryColor,
-        secondary: secondaryColor,
-        surface: darkSurfaceColor,
-        background: darkBackgroundColor,
+
+  // --- PRIVATE METHOD FOR BORDER STYLING ---
+  static final OutlineInputBorder _border = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(12.0),
+    borderSide: const BorderSide(
+      width: 1.5,
+    ),
+  );
+
+  // --- *** THE NEW CODE IS HERE *** ---
+  // A reusable InputDecorationTheme for all TextFields
+  static final _inputDecorationTheme = InputDecorationTheme(
+    border: _border,
+    enabledBorder: _border.copyWith(
+      borderSide: BorderSide(
+        color: Colors.grey.shade400,
+        width: 1.5,
       ),
-      textTheme: _darkTextTheme,
-      appBarTheme: AppBarTheme(
-        backgroundColor: darkSurfaceColor,
-        elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.white),
-        titleTextStyle: GoogleFonts.poppins(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
+    ),
+    focusedBorder: _border.copyWith(
+      borderSide: const BorderSide(
+        color: _primaryColor,
+        width: 2.0,
       ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: secondaryColor, // Use a brighter button color in dark mode
-          foregroundColor: Colors.white,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-          textStyle: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
+    ),
+    prefixIconColor: Colors.grey,
+    // This adds the 'x' button to clear the text
+    suffixIconColor: Colors.grey,
+    floatingLabelStyle: const TextStyle(color: _primaryColor),
+  );
+
+  // --- PUBLIC THEME DEFINITIONS ---
+  static ThemeData lightTheme = ThemeData(
+    brightness: Brightness.light,
+    colorScheme: _lightColorScheme,
+    textTheme: GoogleFonts.interTextTheme(ThemeData.light().textTheme),
+    cardTheme: CardTheme(
+      elevation: 4.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+    ),
+    // Apply the new InputDecorationTheme
+    inputDecorationTheme: _inputDecorationTheme,
+  );
+
+  static ThemeData darkTheme = ThemeData(
+    brightness: Brightness.dark,
+    colorScheme: _darkColorScheme,
+    textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme),
+    cardTheme: CardTheme(
+      elevation: 4.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+    ),
+    // Apply the new InputDecorationTheme, but with dark mode colors
+    inputDecorationTheme: _inputDecorationTheme.copyWith(
+      enabledBorder: _border.copyWith(
+        borderSide: BorderSide(
+          color: Colors.grey.shade700,
+          width: 1.5,
         ),
       ),
-      cardTheme: const CardTheme(color: darkSurfaceColor),
-    );
-  }
+      focusedBorder: _border.copyWith(
+        borderSide: const BorderSide(
+          color: _darkColorScheme.primary,
+          width: 2.0,
+        ),
+      ),
+      prefixIconColor: Colors.grey.shade400,
+      suffixIconColor: Colors.grey.shade400,
+      floatingLabelStyle: const TextStyle(color: _darkColorScheme.primary),
+    ),
+  );
 }
