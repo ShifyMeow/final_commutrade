@@ -1,3 +1,4 @@
+import 'package:final_commutrade/screens/settings/settings_screen.dart';
 import 'package:final_commutrade/widgets/item_card.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,13 @@ class ProfileScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              // Placeholder for navigating to a settings page
+              // *** THE CHANGE IS HERE ***
+              // Navigate to the SettingsScreen
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const SettingsScreen(),
+                ),
+              );
             },
           ),
         ],
@@ -62,7 +69,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'user.email@example.com',
+                          'user.matrics.id', // Using a more generic placeholder
                           style: textTheme.bodyMedium?.copyWith(color: Colors.grey),
                         ),
                       ],
@@ -96,8 +103,6 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             ListView.builder(
-              // Important: We use these two properties when nesting a ListView
-              // inside a SingleChildScrollView to prevent errors.
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: _userItems.length,
@@ -117,7 +122,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  // Helper widget to build the stat columns to avoid repetitive code
+  // Helper widget to build the stat columns
   Widget _buildStatColumn(String label, String value) {
     return Column(
       mainAxisSize: MainAxisSize.min,
