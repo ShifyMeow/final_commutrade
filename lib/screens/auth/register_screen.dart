@@ -1,5 +1,5 @@
-import 'package:final_commutrade/widgets/clearable_text_field.dart'; // NEW import
-import 'package:flutter/material.dart';
+import 'package:final_commutrade/widgets/clearable_text_field.dart';
+import 'package:flutter/material.dart'; // CORRECTED IMPORT
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -23,7 +23,6 @@ class RegisterScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // --- Header ---
                 Text(
                   'Create Account',
                   style: textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -36,39 +35,29 @@ class RegisterScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 48),
-
-                // --- Full Name Field ---
                 const ClearableTextField(
                   labelText: 'Full Name',
                   prefixIcon: Icons.person_outline,
                 ),
                 const SizedBox(height: 16),
-
-                // --- Matrics ID Field ---
                 const ClearableTextField(
                   labelText: 'Matrics ID',
                   prefixIcon: Icons.badge_outlined,
                   keyboardType: TextInputType.text,
                 ),
                 const SizedBox(height: 16),
-
-                // --- Password Field ---
                 const ClearableTextField(
                   labelText: 'Password',
                   prefixIcon: Icons.lock_outline,
                   obscureText: true,
                 ),
                 const SizedBox(height: 16),
-
-                // --- Confirm Password Field ---
                 const ClearableTextField(
                   labelText: 'Confirm Password',
                   prefixIcon: Icons.lock_person_outlined,
                   obscureText: true,
                 ),
                 const SizedBox(height: 32),
-
-                // --- Register Button ---
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -76,17 +65,13 @@ class RegisterScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                   ),
-                  onPressed: () {
-                    // Placeholder for register logic
-                  },
+                  onPressed: () {},
                   child: const Text(
                     'Sign Up',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),
                 const SizedBox(height: 24),
-
-                // --- Login Navigation ---
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

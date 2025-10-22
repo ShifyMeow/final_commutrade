@@ -1,6 +1,6 @@
 import 'package:final_commutrade/screens/auth/register_screen.dart';
-import 'package.final_commutrade/screens/main_screen.dart';
-import 'package:final_commutrade/widgets/clearable_text_field.dart'; // NEW import
+import 'package:final_commutrade/screens/main_screen.dart'; // CORRECTED IMPORT
+import 'package:final_commutrade/widgets/clearable_text_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -20,7 +20,6 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // --- Header ---
                 Text(
                   'Welcome Back!',
                   style: textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -33,24 +32,18 @@ class LoginScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 48),
-
-                // --- Matrics ID Field ---
                 const ClearableTextField(
                   labelText: 'Matrics ID',
                   prefixIcon: Icons.badge_outlined,
                   keyboardType: TextInputType.text,
                 ),
                 const SizedBox(height: 16),
-
-                // --- Password Field ---
                 const ClearableTextField(
                   labelText: 'Password',
                   prefixIcon: Icons.lock_outline,
                   obscureText: true,
                 ),
                 const SizedBox(height: 32),
-
-                // --- Login Button ---
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -71,8 +64,6 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-
-                // --- Register Navigation ---
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

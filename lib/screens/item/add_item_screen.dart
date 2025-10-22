@@ -1,5 +1,5 @@
-import 'package:final_commutrade/widgets/clearable_text_field.dart'; // NEW import
-import 'package:flutter/material.dart';
+import 'package:final_commutrade/widgets/clearable_text_field.dart';
+import 'package:flutter/material.dart'; // CORRECTED IMPORT
 
 class AddItemScreen extends StatelessWidget {
   const AddItemScreen({super.key});
@@ -15,9 +15,7 @@ class AddItemScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: TextButton(
-              onPressed: () {
-                // Placeholder for post logic
-              },
+              onPressed: () {},
               child: const Text('POST'),
             ),
           ),
@@ -29,7 +27,6 @@ class AddItemScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // --- Image Upload Section ---
               Container(
                 height: 200,
                 decoration: BoxDecoration(
@@ -47,37 +44,24 @@ class AddItemScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-
-              // --- Item Title Field ---
               const ClearableTextField(
                 labelText: 'Item Title',
                 hintText: 'e.g., Classic Acoustic Guitar',
               ),
               const SizedBox(height: 16),
-
-              // --- Description Field ---
-              // The standard TextField is still best for multi-line descriptions
               TextField(
                 maxLines: 5,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Description',
                   hintText: 'Include details about the item\'s condition, age, etc.',
-                  // We don't need to define the border here anymore,
-                  // as it's handled by the global InputDecorationTheme
                 ),
               ),
               const SizedBox(height: 16),
-
-              // --- Price Field ---
               const ClearableTextField(
                 labelText: 'Price',
-                // Note: prefixIcon and prefixText cannot be used together.
-                // Our theme handles the styling, so we just set the keyboard type.
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
               ),
               const SizedBox(height: 32),
-
-              // --- Post Button ---
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -85,9 +69,7 @@ class AddItemScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                 ),
-                onPressed: () {
-                  // Placeholder for post logic
-                },
+                onPressed: () {},
                 child: const Text(
                   'List My Item',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
