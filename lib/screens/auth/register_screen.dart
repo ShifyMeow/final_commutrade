@@ -10,7 +10,6 @@ class RegisterScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        // This AppBar provides an automatic back button to navigate to the Login screen
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: IconThemeData(color: theme.colorScheme.onBackground),
@@ -18,7 +17,6 @@ class RegisterScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            // Reduced vertical padding to account for the AppBar's height
             padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -32,16 +30,16 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Start your journey with us',
+                  'Please fill in your details',
                   style: textTheme.titleMedium?.copyWith(color: Colors.grey),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 48),
 
-                // --- Username Field ---
+                // --- Full Name Field ---
                 TextField(
                   decoration: InputDecoration(
-                    labelText: 'Username',
+                    labelText: 'Full Name',
                     prefixIcon: const Icon(Icons.person_outline),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
@@ -50,12 +48,13 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
 
-                // --- Email Field ---
+                // --- Matrics ID Field ---
                 TextField(
-                  keyboardType: TextInputType.emailAddress,
+                  // Using text keyboard type for flexibility (e.g., "AB12345")
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    labelText: 'Email',
-                    prefixIcon: const Icon(Icons.email_outlined),
+                    labelText: 'Matrics ID',
+                    prefixIcon: const Icon(Icons.badge_outlined),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
@@ -114,7 +113,6 @@ class RegisterScreen extends StatelessWidget {
                     const Text("Already have an account?"),
                     TextButton(
                       onPressed: () {
-                        // This takes the user back to the previous screen (Login)
                         Navigator.of(context).pop();
                       },
                       child: const Text(

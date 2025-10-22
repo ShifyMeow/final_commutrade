@@ -1,5 +1,5 @@
 import 'package:final_commutrade/screens/auth/register_screen.dart';
-import 'package:final_commutrade/screens/main_screen.dart'; // NEW import
+import 'package:final_commutrade/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -27,18 +27,18 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Sign in to your account',
+                  'Sign in with your Matrics ID',
                   style: textTheme.titleMedium?.copyWith(color: Colors.grey),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 48),
 
-                // --- Email Field ---
+                // --- Matrics ID Field ---
                 TextField(
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                    labelText: 'Email',
-                    prefixIcon: const Icon(Icons.email_outlined),
+                    labelText: 'Matrics ID',
+                    prefixIcon: const Icon(Icons.badge_outlined),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
@@ -68,9 +68,6 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    // *** THE CHANGE IS HERE ***
-                    // Placeholder for login logic
-                    // Navigate to the main app screen, replacing the login screen
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
                         builder: (context) => const MainScreen(),
@@ -91,7 +88,6 @@ class LoginScreen extends StatelessWidget {
                     const Text("Don't have an account?"),
                     TextButton(
                       onPressed: () {
-                        // Navigate to the RegisterScreen
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) => const RegisterScreen(),
