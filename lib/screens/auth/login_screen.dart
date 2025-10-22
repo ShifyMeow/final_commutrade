@@ -1,4 +1,5 @@
 import 'package:final_commutrade/screens/auth/register_screen.dart';
+import 'package:final_commutrade/screens/main_screen.dart'; // NEW import
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -67,7 +68,14 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
+                    // *** THE CHANGE IS HERE ***
                     // Placeholder for login logic
+                    // Navigate to the main app screen, replacing the login screen
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => const MainScreen(),
+                      ),
+                    );
                   },
                   child: const Text(
                     'Login',
