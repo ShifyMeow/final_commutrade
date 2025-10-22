@@ -20,14 +20,11 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // --- App Logo ---
                 Image.asset(
                   'assets/commutrade.png',
-                  height: 120, // Adjust height as needed
+                  height: 120,
                 ),
                 const SizedBox(height: 48),
-
-                // --- Header ---
                 Text(
                   'Welcome Back!',
                   style: textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -40,24 +37,18 @@ class LoginScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 48),
-
-                // --- Matrics ID Field ---
                 const ClearableTextField(
                   labelText: 'Matrics ID',
                   prefixIcon: Icons.badge_outlined,
                   keyboardType: TextInputType.text,
                 ),
                 const SizedBox(height: 16),
-
-                // --- Password Field ---
                 const ClearableTextField(
                   labelText: 'Password',
                   prefixIcon: Icons.lock_outline,
                   obscureText: true,
                 ),
                 const SizedBox(height: 32),
-
-                // --- Login Button ---
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -78,8 +69,6 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-
-                // --- Register Navigation ---
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -100,8 +89,6 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 32),
-
-                // --- Copyright Notice ---
                 Text(
                   '© 2025 CommuTrade',
                   textAlign: TextAlign.center,

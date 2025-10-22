@@ -1,5 +1,5 @@
-import 'package.final_commutrade/widgets/clearable_text_field.dart';
-import 'package.flutter/material.dart';
+import 'package:final_commutrade/widgets/clearable_text_field.dart';
+import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -23,14 +23,11 @@ class RegisterScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // --- App Logo ---
                 Image.asset(
                   'assets/commutrade.png',
-                  height: 100, // Slightly smaller height for this page
+                  height: 100,
                 ),
                 const SizedBox(height: 24),
-
-                // --- Header ---
                 Text(
                   'Create Account',
                   style: textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -43,8 +40,6 @@ class RegisterScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 32),
-
-                // --- Form Fields ---
                 const ClearableTextField(
                   labelText: 'Full Name',
                   prefixIcon: Icons.person_outline,
@@ -68,8 +63,6 @@ class RegisterScreen extends StatelessWidget {
                   obscureText: true,
                 ),
                 const SizedBox(height: 32),
-
-                // --- Register Button ---
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -84,8 +77,6 @@ class RegisterScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-
-                // --- Login Navigation ---
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -102,8 +93,6 @@ class RegisterScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 24),
-
-                // --- Copyright Notice ---
                 Text(
                   '© 2025 CommuTrade',
                   textAlign: TextAlign.center,
