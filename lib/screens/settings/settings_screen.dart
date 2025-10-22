@@ -1,10 +1,12 @@
-import 'package:final_commutrade/widgets/custom_dialog.dart'; // NEW import
-import 'package:flutter/material.dart';
+import 'package:final_commutrade/theme/app_theme_notifier.dart'; // NEW import
+import 'package:final_commutrade/widgets/custom_dialog.dart';
+import 'package:final_commutrade/widgets/settings_switch_tile.dart'; // NEW import
+import 'package.flutter/material.dart';
+import 'package:provider/provider.dart'; // NEW import
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
-  // Helper function to show the dialog
   void _showLogoutDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -14,10 +16,7 @@ class SettingsScreen extends StatelessWidget {
           content: 'Are you sure you want to log out?',
           confirmText: 'Logout',
           onConfirm: () {
-            // Placeholder for actual logout logic
-            // For now, it will just close the dialog
             Navigator.of(dialogContext).pop();
-            // In a real app, you'd navigate back to the LoginScreen after this
           },
         );
       },
@@ -26,6 +25,9 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Access the AppThemeNotifier to get the current theme state
+    final themeNotifier = Provider.of<AppThemeNotifier>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
@@ -37,7 +39,7 @@ class SettingsScreen extends StatelessWidget {
             leading: Icon(Icons.person_outline),
             title: Text('Edit Profile'),
             subtitle: Text('Update your name and profile picture'),
-            onTap: null, // Placeholder - onTap is disabled for now
+            onTap: null,
           ),
           const ListTile(
             leading: Icon(Icons.lock_outline),
@@ -52,13 +54,19 @@ class SettingsScreen extends StatelessWidget {
             leading: const Icon(Icons.notifications_outlined),
             title: const Text('Notifications'),
             subtitle: const Text('Manage push notifications'),
-            onTap: () {}, // Placeholder
-          ),
-          ListTile(
-            leading: const Icon(Icons.palette_outlined),
-            title: const Text('Appearance'),
-            subtitle: const Text('Switch between light and dark mode'),
             onTap: () {},
+          ),
+          // *** THE CHANGE IS HERE ***
+          // Replaced the old ListTile with our new custom widget
+          SettingsSwitchTile(
+            icon: Icons.palette_outlined,
+            title: 'Dark Mode',
+            subtitle: 'Enable or disable the dark theme',
+            value: themeNotifier.isDarkMode, // The switch is on if dark mode is enabled
+            onChanged: (newValue) {
+              // When toggled, we call the toggleTheme method
+              themeNotifier.toggleTheme();
+            },
           ),
 
           // --- Actions Section ---
@@ -70,8 +78,6 @@ class SettingsScreen extends StatelessWidget {
               style: TextStyle(color: Theme.of(context).colorScheme.error),
             ),
             onTap: () {
-              // *** THE CHANGE IS HERE ***
-              // Call the helper function to show the dialog
               _showLogoutDialog(context);
             },
           ),
