@@ -1,5 +1,5 @@
 import 'package:final_commutrade/theme/app_theme_notifier.dart';
-import 'package:final_commutrade/widgets/announcement_card.dart'; // We will add this import
+import 'package:final_commutrade/widgets/announcement_card.dart';
 import 'package:final_commutrade/widgets/item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  // Placeholder data for the announcement
+  // Generic placeholder data for the announcement
   final Map<String, String> _announcement = const {
     'title': 'Important Announcement',
     'content': 'This is a placeholder for an important announcement from a lecturer or warden.',
@@ -76,7 +76,12 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 24),
 
               // --- Announcement Section ---
-              // We will add this section in the next step, but the overflow fix is below
+              AnnouncementCard(
+                title: _announcement['title']!,
+                content: _announcement['content']!,
+                author: _announcement['author']!,
+              ),
+              const SizedBox(height: 32), // More space after the announcement
 
               // --- Featured Items Section ---
               Padding(
@@ -88,9 +93,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               SizedBox(
-                // *** THE FIX IS HERE ***
-                // Increased height from 260 to 280 to prevent overflow
-                height: 280,
+                height: 280, // Height is now corrected to 280
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: _featuredItems.length,
@@ -99,7 +102,6 @@ class HomeScreen extends StatelessWidget {
                     final item = _featuredItems[index];
                     return SizedBox(
                       width: 300,
-                      // We wrap the ItemCard in Padding to give it space
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: ItemCard(
