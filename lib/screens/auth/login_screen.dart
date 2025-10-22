@@ -1,3 +1,4 @@
+import 'package:final_commutrade/screens/auth/register_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -9,7 +10,6 @@ class LoginScreen extends StatelessWidget {
     final textTheme = theme.textTheme;
 
     return Scaffold(
-      // Use SingleChildScrollView to prevent overflow when keyboard appears
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -47,7 +47,7 @@ class LoginScreen extends StatelessWidget {
 
                 // --- Password Field ---
                 TextField(
-                  obscureText: true, // Hides the password text
+                  obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
                     prefixIcon: const Icon(Icons.lock_outline),
@@ -83,7 +83,12 @@ class LoginScreen extends StatelessWidget {
                     const Text("Don't have an account?"),
                     TextButton(
                       onPressed: () {
-                        // Placeholder for navigating to the register screen
+                        // Navigate to the RegisterScreen
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const RegisterScreen(),
+                          ),
+                        );
                       },
                       child: const Text(
                         'Sign Up',

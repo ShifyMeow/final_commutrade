@@ -9,13 +9,19 @@ class RegisterScreen extends StatelessWidget {
     final textTheme = theme.textTheme;
 
     return Scaffold(
+      appBar: AppBar(
+        // This AppBar provides an automatic back button to navigate to the Login screen
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: IconThemeData(color: theme.colorScheme.onBackground),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 48.0),
+            // Reduced vertical padding to account for the AppBar's height
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              AxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // --- Header ---
@@ -108,11 +114,11 @@ class RegisterScreen extends StatelessWidget {
                     const Text("Already have an account?"),
                     TextButton(
                       onPressed: () {
-                        // Placeholder for navigating back to the login screen
+                        // This takes the user back to the previous screen (Login)
                         Navigator.of(context).pop();
                       },
                       child: const Text(
-                        'Sign In',
+                        'Login',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
