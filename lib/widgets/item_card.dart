@@ -1,5 +1,5 @@
 import 'package:final_commutrade/screens/item/item_details_screen.dart';
-import 'package:flutter/material.dart'; // CORRECTED IMPORT
+import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {
   final String title;
@@ -15,9 +15,11 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Card(
       elevation: 4.0,
-      shadowColor: Theme.of(context).shadowColor.withOpacity(0.1),
+      shadowColor: theme.shadowColor.withOpacity(0.1),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0),
       ),
@@ -34,17 +36,51 @@ class ItemCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AspectRatio(
-              aspectRatio: 16 / 9,
-              child: Container(
-                color: Theme.of(context).scaffoldBackgroundColor.withAlpha(100),
-                child: const Icon(
-                  Icons.image_not_supported_outlined,
-                  size: 60,
-                  color: Colors.grey,
+            // --- Image Section with Enhancements ---
+            Stack(
+              // Using a Stack to layer the gradient and icon on top of the image
+              children: [
+                AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Container(
+                    color: theme.cardColor,
+                    child: const Icon(
+                      Icons.image_outlined, // Changed for a cleaner look
+                      size: 60,
+                      color: Colors.grey,
+                    ),
+                  ),
                 ),
-              ),
+                // --- Gradient Overlay ---
+                Positioned.fill(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.black.withOpacity(0.4),
+                          Colors.transparent,
+                        ],
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.center,
+                      ),
+                    ),
+                  ),
+                ),
+                // --- Favorite Icon ---
+                Positioned(
+                  top: 8,
+                  right: 8,
+                  child: IconButton(
+                    icon: const Icon(Icons.favorite_border),
+                    color: Colors.white,
+                    onPressed: () {
+                      // Placeholder for favorite/bookmark logic
+                    },
+                  ),
+                ),
+              ],
             ),
+            // --- Item Details ---
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
@@ -52,22 +88,22 @@ class ItemCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: theme.textTheme.titleLarge,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 4),
                   Text(
                     'Posted by $author',
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: theme.textTheme.bodySmall,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 10),
                   Text(
                     price,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      color: theme.colorScheme.primary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
