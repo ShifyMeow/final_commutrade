@@ -1,4 +1,4 @@
-import 'package:final_commutrade/screens/main_screen.dart';
+import 'package:final_commutrade/screens/auth/login_screen.dart'; // UPDATED import
 import 'package:final_commutrade/theme/app_theme.dart';
 import 'package:final_commutrade/theme/app_theme_notifier.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,9 @@ class CommuTradeApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: themeNotifier.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-          home: const MainScreen(),
+          // *** THE CHANGE IS HERE ***
+          // The app will now start on the LoginScreen.
+          home: const LoginScreen(),
           debugShowCheckedModeBanner: false,
         );
       },
