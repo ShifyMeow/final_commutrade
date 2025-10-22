@@ -1,5 +1,6 @@
 import 'package:final_commutrade/theme/app_theme_notifier.dart';
 import 'package:final_commutrade/widgets/announcement_card.dart';
+import 'package:final_commutrade/widgets/home_app_bar.dart'; // NEW import
 import 'package:final_commutrade/widgets/item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   // Generic placeholder data for the announcement
   final Map<String, String> _announcement = const {
     'title': 'Important Announcement',
-    'content': 'This is a placeholder for an important announcement from a lecturer or warden.',
+    'content': 'This is a placeholder for an important announcement.',
     'author': 'Admin',
   };
 
@@ -39,25 +40,14 @@ class HomeScreen extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('CommuTrade'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(
-              themeNotifier.isDarkMode ? Icons.nightlight_round : Icons.wb_sunny,
-            ),
-            onPressed: () {
-              themeNotifier.toggleTheme();
-            },
-          ),
-        ],
-        elevation: 0,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        foregroundColor: Theme.of(context).colorScheme.onBackground,
+      // *** THE CHANGE IS HERE ***
+      // Replaced the old AppBar with our new custom HomeAppBar
+      appBar: HomeAppBar(
+        isDarkMode: themeNotifier.isDarkMode,
+        onSearchPressed: () {},
+        onThemeTogglePressed: () {
+          themeNotifier.toggleTheme();
+        },
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -65,23 +55,16 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // --- Welcome Header ---
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Text(
-                  'Welcome Back!',
-                  style: textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
-                ),
-              ),
-              const SizedBox(height: 24),
-
               // --- Announcement Section ---
+              // The Welcome message is now in the AppBar, so this section
+              // can be simplified or removed later if desired.
+              const SizedBox(height: 8), // Added space from AppBar
               AnnouncementCard(
                 title: _announcement['title']!,
                 content: _announcement['content']!,
                 author: _announcement['author']!,
               ),
-              const SizedBox(height: 32), // More space after the announcement
+              const SizedBox(height: 32),
 
               // --- Featured Items Section ---
               Padding(
@@ -93,7 +76,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               SizedBox(
-                height: 280, // Height is now corrected to 280
+                height: 280,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: _featuredItems.length,
